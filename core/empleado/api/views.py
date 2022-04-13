@@ -1,6 +1,8 @@
+import json
 from django.contrib.auth import get_user_model
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateModelMixin
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
@@ -11,6 +13,7 @@ from empleado.models import Empleado, Ingreso
 # from users.models import User
 from .serializers import UserSerializer, EmpleadoSerializer, IngresoSerializer
 
+from rest_framework.parsers import MultiPartParser, FormParser
 
 class EmpleadoViewSet(ListModelMixin, GenericViewSet):
 
@@ -75,7 +78,14 @@ class EmpleadoCreateAPIView(generics.CreateAPIView):
 class IngresoCreateAPIView(generics.CreateAPIView):
  
     serializer_class = IngresoSerializer
+    #parser_classes = (MultiPartParser, FormParser)
+    print("DDDD: ")
 
+    """ def post(self, request, *args, **kwargs):
+        file = request.data['file']
+        image = Ingreso.objects.create(image=file)
+        return HttpResponse(json.dumps({'message': "Uploaded"}), status=200)
+ """
     def get_queryset(self):
         user = self.request.user
         queryset = Ingreso.objects.select_related('ingresos_empleado').filter(user=user.id)

@@ -11,10 +11,13 @@ function encodeImageFileAsURL(element) {
     return reader.result
   }
 
+
+
 // Porcentaje Total 
 const enrolamiento = function () {
     let encode = "";
-    let foto = document.getElementById("imagen");
+    let foto = document.querySelector('input[type="file"]')
+    
     //encode = encodeImageFileAsURL(foto);
     let dispositivo = 1
     let usuario = 1
@@ -24,31 +27,44 @@ const enrolamiento = function () {
 
     const formData = new FormData();
 
-    const file = $("#imagen")[0].files[0];
+    const file = foto.files[0];
     documento = $("#imagen")[0].files[0],file.fileName;
-        formData.append('imagen', file);
+        formData.append('foto', documento);
         formData.append('empleado', usuario);
         formData.append('dispositivo', dispositivo);
         formData.append('ingreso', ingreso);
         formData.append('salida', salida);
-
-        console.log("AAAAAAAAAA DOCUMENTO");
-        console.log($("#imagen")[0].files[0],file.fileName);
-
-fetch(url, {
-  method: 'POST', // or 'PUT'
-  body: formData,// data can be `string` or {object}!
-  headers:{
-    "X-CSRFToken": csrftoken,
-  }
-}).then(res => res.json())
-.catch(error => console.error('Error:', error))
-.then(response => console.log('Success:', response));
+    fetch(url, {
+    method: 'POST', // or 'PUT'
+    body: formData,// data can be `string` or {object}!
+    headers:{
+        "X-CSRFToken": csrftoken,
+    }
+    }).then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response));
 
     }
-    
+    const getUsuarios = function () {
+        let url = 'http://127.0.0.1:8000/api/empleado/detalle/';
+    fetch(url, {
+      method: 'GET', // or 'PUT'
+      headers:{"content-type": "application/json",
+        "X-CSRFToken": csrftoken,
+      }
+    }).then(response => response.json())
+    .then(data => console.log(data));
+    console.log("aaaa")
+        }
 
-    let btn = document.getElementById("enviarImagen");
-btn.addEventListener('click', event => {
-    enrolamiento();
-});
+const formu = document.getElementById("formEnrolamiento");
+formu.addEventListener("submit", function(event){
+    event.preventDefault();
+    console.log(event);
+    console.log("Evento submit  detectado")
+})
+
+
+
+
+

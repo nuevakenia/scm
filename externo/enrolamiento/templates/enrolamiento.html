@@ -36,7 +36,7 @@
     
     {% block content %}
 
-    <form class="form" id="formModificarEstandar" name="formModificarEstandar" method="POST" enctype="multipart/form-data" >{% csrf_token %}
+    <form class="form" id="formEnrolamiento" name="formEnrolamiento" method="POST" enctype="multipart/form-data" >{% csrf_token %}
         <div class="card-body">
             <div class="form-group row">
                 <div class="col-lg-6">
@@ -45,15 +45,16 @@
                         <label>Subir Fotografía:</label>
                         <br>
                         
-                        <input type="file" id="imagen" name="imagen" accept="image/*" onchange="encodeImageFileAsURL(this)">
+                        <input type="file" id="imagen" name="imagen" accept="image/*">
                         <input type="submit"  id="enviarImagen" name="enviarImagen" >
-                        <button id="enviarImagen2">Click me</button>
+                        <button id="enviarImagen2" onclick="enrolamiento()">Click me</button>
                     </p>
                 </div>
                 
             </div>
             
     </form>
+    
     {% endblock content %}
 </body>
 

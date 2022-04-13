@@ -22,10 +22,15 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class IngresoSerializer(serializers.ModelSerializer):
+    foto = serializers.ImageField(required=True)
     class Meta:
         model = Ingreso
         fields = "__all__"
-
+    def create(self, validated_data):
+        print("\n Override crear enrolamiento", validated_data)
+        ingreso = Ingreso.objects.create(**validated_data)
+        
+        return ingreso
 
 class EmpleadoSerializer(serializers.ModelSerializer):
     #detalle = IngresoSerializer(required=True)
