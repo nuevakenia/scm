@@ -21,11 +21,18 @@ class UserSerializer(serializers.ModelSerializer):
         }
 
 
+class IngresosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ingreso
+        fields = "__all__"
+
+
 class IngresoSerializer(serializers.ModelSerializer):
     foto = serializers.ImageField(required=True)
     class Meta:
         model = Ingreso
         fields = "__all__"
+
     def create(self, validated_data):
         print("\n Override crear enrolamiento", validated_data)
         ingreso = Ingreso.objects.create(**validated_data)

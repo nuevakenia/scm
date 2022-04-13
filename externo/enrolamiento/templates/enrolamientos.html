@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>{% block title %}Base{% endblock %}</title>
+    <title>{% block title %}Enrolamientos{% endblock %}</title>
 
 </head>
 {% endblock%}
@@ -36,32 +36,31 @@
 
     
     {% block content %}
-
-    <form class="form" id="formEnrolamiento" name="formEnrolamiento" method="POST" enctype="multipart/form-data" >{% csrf_token %}
-        <div class="card-body">
-            <div class="form-group row">
-                <div class="col-lg-6">
-                    <p style="text-align:center;">
-                        <h2><b>Enrolamiento</b></h2> 
-                        <label>Subir Fotografía:</label>
-                        <br>
-                        
-                        <input type="file" id="imagen" name="imagen" accept="image/*">
-                        <input type="submit"  id="enviarImagen" name="enviarImagen" >
-                        <button id="enviarImagen2" onclick="enrolamiento()">Click me</button>
-                    </p>
-                </div>
-                
-            </div>
-            
-    </form>
-    
+    <script>$(document).ready( function () {
+        console.log("dffdfdf")
+      });
+      </script>
+    <table class="table table-borderless" id="tablaEnrolamientos">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Empleado</th>
+              <th scope="col">Dispositivo</th>
+              <th scope="col">Ingreso</th>
+              <th scope="col">Salida</th>
+              <th scope="col">Foto</th>
+            </tr>
+          </thead>
+      </table>
+    fsfsfsf
     {% endblock content %}
 </body>
 
 </html>
 {% comment %} APIS {% endcomment %}
 {% block global_vars %}
+
+
 
 {% endblock global_vars %}
 
@@ -72,7 +71,7 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script> 
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-    <script src="{% static 'js/enrolamiento.js' %}"></script>
+    <script src="{% static 'js/enrolamientos.js' %}"></script>
 
   
 <!-- 

@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
-from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateModelMixin
+from rest_framework.mixins import (ListModelMixin, RetrieveModelMixin, UpdateModelMixin)
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import generics, status
@@ -11,8 +11,9 @@ from rest_framework.generics import ListAPIView
 from django.views.generic import CreateView, DetailView, UpdateView
 from empleado.models import Empleado, Ingreso
 # from users.models import User
-from .serializers import UserSerializer, EmpleadoSerializer, IngresoSerializer
-
+from .serializers import (UserSerializer, EmpleadoSerializer,
+ IngresoSerializer, IngresosSerializer
+)
 from rest_framework.parsers import MultiPartParser, FormParser
 
 class EmpleadoViewSet(ListModelMixin, GenericViewSet):
@@ -57,6 +58,14 @@ class ListarEmpleadoViewSet(ListModelMixin, GenericViewSet):
         #print("User: ", user.id)
         return queryset
 
+class ListarIngresosViewSet(ListModelMixin, GenericViewSet):
+    serializer_class = IngresosSerializer
+
+    def get_queryset(self):
+        #user = self.request.user
+        queryset = Ingreso.objects.all()
+        #print("User: ", user.id)
+        return queryset
 
 class EmpleadoCreateAPIView(generics.CreateAPIView):
     serializer_class = EmpleadoSerializer

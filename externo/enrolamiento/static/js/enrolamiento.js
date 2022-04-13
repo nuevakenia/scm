@@ -68,3 +68,11 @@ formu.addEventListener("submit", function(event){
 
 
 
+$(document).ready( function () {
+  console.log("xDDD");
+  getEnrolamientos();
+});
+
+function yourfunction() { console.log("xDDD"); }
+
+window.onload = yourfunction;

@@ -34,14 +34,14 @@ class Enrolamiento(TemplateView):
         #usuaios = User.objects.filter(groups__name='')
         return render(request, "inicio.html")
 
-class Enrolamiento(TemplateView):
+class Enrolamientos(TemplateView):
 
-    template_name = "enrolamiento.html"
+    template_name = "enrolamientos.html"
     
     def get(self, request):
 
-        return render(request, "enrolamiento.html")
+        return render(request, "enrolamientos.html")
 
     def post(self, request):
         #usuaios = User.objects.filter(groups__name='')
-        return render(request, "enrolamiento.html")
+        return render(request, "enrolamientos.html")

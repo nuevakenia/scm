@@ -19,16 +19,17 @@ from django.urls import include, path
 from django.urls.conf import re_path
 from django.views.generic import TemplateView
 
-from enrolamiento.views import (Inicio,Enrolamiento)
+from enrolamiento.views import (Inicio,Enrolamiento,Enrolamientos)
 
 app_name = 'externo'
 
 
 urlpatterns = [
-    # Core
+    # Externo
     path('admin/', admin.site.urls),
-    path('inicio/', view=Inicio.as_view(), name="inicio_view"),
-    path('enrolamiento/', view=Enrolamiento.as_view(), name="enrolamiento_view"),
+    path('inicio/', view=Inicio.as_view(), name="inicio"),
+    path('enrolamiento/', view=Enrolamiento.as_view(), name="enrolamiento"),
+    path('enrolamientos/', view=Enrolamientos.as_view(), name="enrolamientos"),
     path('api-auth/', include('rest_framework.urls')),
 ]
 
