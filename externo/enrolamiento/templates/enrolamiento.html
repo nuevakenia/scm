@@ -1,10 +1,6 @@
-{% extends "base.html" %}
 {% load static %}
 
 {% block header%}
-
-<!DOCTYPE html>
-<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -34,21 +30,21 @@
 <body>
     
 
-    
+    {% include "barra.html" %}
     {% block content %}
 
     <form class="form" id="formEnrolamiento" name="formEnrolamiento" method="POST" enctype="multipart/form-data" >{% csrf_token %}
         <div class="card-body">
             <div class="form-group row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <p style="text-align:center;">
                         <h2><b>Enrolamiento</b></h2> 
                         <label>Subir Fotografía:</label>
                         <br>
                         
                         <input type="file" id="imagen" name="imagen" accept="image/*">
-                        <input type="submit"  id="enviarImagen" name="enviarImagen" >
-                        <button id="enviarImagen2" onclick="enrolamiento()">Click me</button>
+                        
+                        <button id="enviarImagen2" onclick="enrolamiento()">Enviar</button>
                     </p>
                 </div>
                 
@@ -59,7 +55,7 @@
     {% endblock content %}
 </body>
 
-</html>
+
 {% comment %} APIS {% endcomment %}
 {% block global_vars %}
 

@@ -28,7 +28,7 @@ router.register(r'users', UserViewSet, basename='users')
 # DASHBOARD ListarIngresosViewSet
 router.register("empleado", ListarEmpleadoViewSet, basename='Empleados')
 router.register("empleado/detalle", DetalleEmpleadoViewSet, basename='empleados_detalle')
-router.register("empleado/modificar", ModificarEmpleadoViewSet, basename='empleados_modificar')
+#router.register("empleado/modificar/<int:pk>/", ModificarEmpleadoViewSet, basename='empleados_modificar')
 router.register("empleado/eliminar", EliminarEmpleadoViewSet, basename='empleados_eliminar')
 #router.register("Empleados/crear", EmpleadoCreateAPIView, basename='Empleados_crear')
 #router.register("Empleados/detalle", EmpleadoDetailAPIView, basename='Empleados_detalle')
@@ -39,6 +39,8 @@ urlpatterns = [
     path('', include(router.urls)),
     path('empleado/crear', EmpleadoCreateAPIView.as_view(), name="empleados_crear"),
     path('ingreso/crear', IngresoCreateAPIView.as_view(), name="ingresos_crear"),
+    
+    path('empleado/modificar/<int:pk>/', ModificarEmpleadoViewSet.as_view(), name="empleados_modificar"),
     #path('empleado/detalle', EmpleadoDetailAPIView.as_view(), name="Empleados_detalle")
 ]
 

@@ -64,15 +64,8 @@ formu.addEventListener("submit", function(event){
     console.log("Evento submit  detectado")
 })
 
-
-
-
-
 $(document).ready( function () {
-  console.log("xDDD");
+  console.log("Inicio");
   getEnrolamientos();
 });
 
-function yourfunction() { console.log("xDDD"); }
-
-window.onload = yourfunction;

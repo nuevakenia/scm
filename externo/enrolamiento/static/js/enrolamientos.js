@@ -1,4 +1,4 @@
-
+const csrftoken = Cookies.get("csrftoken");
 
 const getEnrolamientos = function () {
     let url = 'http://127.0.0.1:8000/api/ingresos/';
@@ -8,59 +8,55 @@ const getEnrolamientos = function () {
             "X-CSRFToken": csrftoken,
         }
         }).then(response => response.json())
-        .then(data => console.log(data));
-        console.log("aaaa")
-        listadoEnrolamientos(data);
+        .then(data => 
+        listadoEnrolamientos(data))
+        console.log("Datos fetch: ")
+
+        //
             }
 
     const listadoEnrolamientos = (data) => {
+    
         console.log("Datos: ")
         console.log(data);
-    
-    
+        
+        
+        document.getElementById("tablaEnrolamientos").innerHTML +=
+        `
+        
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Empleado</th>
+              <th scope="col">Dispositivo</th>
+              <th scope="col">Ingreso</th>
+              <th scope="col">Salida</th>
+              <th scope="col">Foto</th>
+            </tr>
+          </thead>
+
+`
+
         let bloque = data.forEach(function (element, indice, array) {
             console.log(indice);
-            document.getElementById("tablaEnrolamientos").innerHTML +=
-                `
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Empleado</th>
-                    <th scope="col">Dispositivo</th>
-                    <th scope="col">Ingreso</th>
-                    <th scope="col">Salida</th>
-                    <th scope="col">Foto</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row"></th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-        
-    `
+            $("#tablaEnrolamientos").append(
+                `<tr>
+                <th scope="row">${element.id}</th>
+                <td>
+                <a href="http://localhost:8001/empleado/modificar/1/">${element.empleado}</a>
+                </td>
+                <td>${element.dispositivo}</td>
+                <td>${element.ingreso}</td>
+                <td>${element.salida}</td>
+                <td> <img src="${element.foto}" width="100" height="100"> </td>
+              </tr>`
+            );
+
         })};
 
 
 $(document).ready( function () {
-    console.log("xDDD");
+    console.log("Inicio");
     getEnrolamientos();
   });
 
-  function yourfunction() { console.log("xDDD"); }
-
-window.onload = yourfunction;

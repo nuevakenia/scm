@@ -19,7 +19,7 @@ from django.urls import include, path
 from django.urls.conf import re_path
 from django.views.generic import TemplateView
 
-from enrolamiento.views import (Inicio,Enrolamiento,Enrolamientos)
+from enrolamiento.views import (Inicio,Enrolamiento,Enrolamientos,Empleado_modificar)
 
 app_name = 'externo'
 
@@ -30,6 +30,7 @@ urlpatterns = [
     path('inicio/', view=Inicio.as_view(), name="inicio"),
     path('enrolamiento/', view=Enrolamiento.as_view(), name="enrolamiento"),
     path('enrolamientos/', view=Enrolamientos.as_view(), name="enrolamientos"),
+    path('empleado/modificar/<int:pk>/', view=Empleado_modificar.as_view(), name="empleado"),
     path('api-auth/', include('rest_framework.urls')),
 ]
 

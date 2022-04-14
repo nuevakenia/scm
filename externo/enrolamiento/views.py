@@ -24,15 +24,15 @@ class Inicio(TemplateView):
 
 class Enrolamiento(TemplateView):
 
-    template_name = "inicio.html"
+    template_name = "enrolamiento.html"
 
     def get(self, request):
 
-        return render(request, "inicio.html")
+        return render(request, "enrolamiento.html")
 
     def post(self, request):
         #usuaios = User.objects.filter(groups__name='')
-        return render(request, "inicio.html")
+        return render(request, "enrolamiento.html")
 
 class Enrolamientos(TemplateView):
 
@@ -45,3 +45,16 @@ class Enrolamientos(TemplateView):
     def post(self, request):
         #usuaios = User.objects.filter(groups__name='')
         return render(request, "enrolamientos.html")
+
+
+class Empleado_modificar(TemplateView):
+
+    template_name = "empleado_modificar.html"
+
+    def get(self, request,pk=None):
+
+        return render(request, "empleado_modificar.html")
+
+    def post(self, request,pk=None):
+        #usuaios = User.objects.filter(groups__name='')
+        return render(request, "empleado_modificar.html")

@@ -1,0 +1,114 @@
+
+{% load static %}
+
+{% block header%}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>{% block title %}Empleados{% endblock %}</title>
+
+</head>
+{% endblock%}
+<style>
+    * {
+        font-family: courier;
+    }
+
+    .titulo {
+        text-align: center;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+<body>
+    {% include "barra.html" %}
+
+    
+    {% block content %}
+    <div class="col-lg-12">
+    <p style="text-align:center;"><h1>Modificar Empleado<h1></p></div>
+    <form class="form" id="formModificarEmpleado" name="formModificarEmpleado">
+        <div class="card-body">
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <p style="text-align:center;"><label>Nombre:</label>
+                        <input type="text" id="inputNombre" name="inputNombre"
+                            class="form-control text-center" placeholder="Ingrese un nombre" />
+                        <span class="form-text text-muted">Ingrese un nombre</span>
+                    </p>
+                </div>
+                
+                <div class="col-lg-6">
+                    <p style="text-align:center;"><label>Rut:</label>
+                        <input type="text" id="inputRut" name="inputRut"
+                            class="form-control text-center" placeholder="Ingrese un rut" />
+                        <span class="form-text text-muted">Ingrese un rut</span>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <p style="text-align:center;"><label>telefono:</label>
+                        <input type="text" id="inputTelefono" name="inputTelefono"
+                            class="form-control text-center" placeholder="Ingrese un nombre" />
+                        <span class="form-text text-muted">Ingrese un telefono</span>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <p style="text-align:center;"><label>Fotografía:</label>
+                <input type="file" id="selectorFoto" name="selectorFoto" accept="image/*">
+                        
+                    </p>
+                </div>
+                <div class="col-lg-12">
+                    <p style="text-align:center;"><label>Fotografía actual:</label>
+                    </p>
+                    <p style="text-align:center;">
+                        <img src="" id="fotoDisplay" width="200" height="200"> </p>
+                    
+                </div>
+                <div class="col-lg-12">
+                    <p style="text-align:center;">
+                        <button id="enviarFormulario" onclick="putEmpleado()" >Enviar</button>
+                    </p>
+                </div>
+                
+            </div>
+            
+            </div>
+            
+        </div>
+    </form>
+    
+    {% endblock content %}
+</body>
+
+</html>
+{% comment %} APIS {% endcomment %}
+{% block global_vars %}
+
+
+
+{% endblock global_vars %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script src="{% static 'js/empleado_modificar.js' %}"></script>
+
+
+
+

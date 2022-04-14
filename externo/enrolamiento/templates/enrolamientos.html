@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+
 {% load static %}
 
 {% block header%}
@@ -32,25 +32,14 @@
 </style>
 
 <body>
-    
+    {% include "barra.html" %}
 
     
     {% block content %}
-    <script>$(document).ready( function () {
-        console.log("dffdfdf")
-      });
-      </script>
+    
+     
     <table class="table table-borderless" id="tablaEnrolamientos">
-        <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Empleado</th>
-              <th scope="col">Dispositivo</th>
-              <th scope="col">Ingreso</th>
-              <th scope="col">Salida</th>
-              <th scope="col">Foto</th>
-            </tr>
-          </thead>
+        
       </table>
     fsfsfsf
     {% endblock content %}
@@ -72,14 +61,3 @@
     crossorigin="anonymous"></script> 
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     <script src="{% static 'js/enrolamientos.js' %}"></script>
-
-  
-<!-- 
-  For this base.html to work in dev and in production,
-  you'll need to set a couple of keys inside your settings.py.
-  Another file in this gist shows which ones you'll really need.
--->
-
-
-
-

@@ -31,14 +31,22 @@ class DetalleEmpleadoViewSet(ListModelMixin, GenericViewSet):
         #print("User: ", user.id)
         return queryset
 
-class ModificarEmpleadoViewSet(ListModelMixin, GenericViewSet):
+class ModificarEmpleadoViewSet(generics.UpdateAPIView):
     serializer_class = EmpleadoSerializer
 
-    def get_queryset(self):
-        #user = self.request.user
-        queryset = Empleado.objects.prefetch_related('ingresos_empleado').filter()
-        #print("User: ", user.id)
-        return queryset
+    def get_queryset(self,pk):
+        return self.get_serializer().Meta.model.objects.filter(id=pk).first()
+
+    def patch(self,request,pk=None):
+        if self.get_queryset(pk):
+            empleado_serializer = self.serializer_class(self.get_queryset(pk))
+            return Response(empleado_serializer.data, status = status.HTTP_200_OK)
+        return Response({'error': 'El empleado no existe'},status = status.HTTP_400_BAD_REQUEST)
+    def put(self,request,pk=None):
+        if self.get_queryset(pk):
+            empleado_serializer = self.serializer_class(self.get_queryset(pk),data = request.data)
+            return Response(empleado_serializer.data, status = status.HTTP_200_OK)
+        return Response({'error': 'El empleado no existe'},status = status.HTTP_400_BAD_REQUEST)
 
 class EliminarEmpleadoViewSet(ListModelMixin, GenericViewSet):
     serializer_class = EmpleadoSerializer
